@@ -12,8 +12,7 @@ sleep 20s
 
 cd downloads
 
-echo S
-ls
+#echo S
 
 until [ $(S) = "googlechrome.dmg" ]
 	do
