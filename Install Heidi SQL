@@ -1,0 +1,29 @@
+#!/bin/bash
+ECHO OFF
+
+::HEIDISQL INSTALL
+
+start https://www.heidisql.com/installers/HeidiSQL_10.2.0.5599_Setup.exe
+TIMEOUT 10
+
+:while
+	if not exist "HeidiSQL_10.2.0.5599_Setup.exe" (timeout 10 & goto :while)
+
+HeidiSQL_10.2.0.5599_Setup.exe /VERYSILENT /SUPPRESSMSGBOXES /SP-)
+
+
+::SSH Keygen
+CD ..
+ECHO Next it will ask you to ENTER/CREATE A NEW PASSWORD -NOTHING WILL SHOW AS YOU TYPE SO PRESS ENTER/RETURN WHEN DONE
+ssh-keygen -t rsa -f .ssh\id_rsa
+ECHO.
+ECHO.
+SET /P s=<".ssh\id_rsa.pub"
+ECHO [101m %s% [0m
+ECHO.
+ECHO.
+ECHO COPY THE ABOVE "ssh-rsa AAA......@laptop...." ABOVE by highlighting it then right click and copy. 
+ECHO Then paste it and send it to support"
+ECHO.
+ECHO PRESS ANY KEY TO EXIT
+PAUSE
