@@ -1,0 +1,30 @@
+
+
+S()
+{
+	find googlechrome.dmg
+}
+
+#download and install
+
+open "https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg"
+sleep 20s
+
+cd downloads
+
+echo S
+ls
+
+until [ $(S) = "googlechrome.dmg" ]
+	do
+		sleep 10s
+	done
+
+open googlechrome.dmg
+
+sleep 20s
+
+cp -r /Volumes/"google chrome/google chrome.app" /Applications
+
+cd ../../..
+diskutil unmount /Volumes/"Google Chrome"
