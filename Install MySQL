@@ -1,0 +1,14 @@
+ECHO OFF
+
+::----------------SQL INSTALL ------------
+
+start https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-8.0.18-winx64.msi
+TIMEOUT 10
+
+:while
+	if not exist "mysql-workbench-community-8.0.18-winx64.msi" (timeout 10 & goto :while)
+
+ECHO INSTALLING....
+ECHO.
+pause
+msiexec /i mysql-workbench-community-8.0.18-winx64.msi /passive
