@@ -1,0 +1,14 @@
+#!/bin/bash
+echo off
+S()
+{
+	cd downloads
+	find sequel-pro-1.1.2.dmg
+}
+#SSH keygen
+ssh-keygen -t rsa -f ~/.ssh/id_rsa
+echo ""
+$tput setaf 4;cat ~/.ssh/id_rsa.pub;tput setaf default
+echo ""
+echo "copy the above part of ssh-rsa AAA.... .local and send it to support"
+echo ""
