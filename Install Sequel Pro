@@ -7,22 +7,35 @@ S()
 ###---download and install sequelpro---###
 
 #echo downloading SequelPro
-open https://sequelpro.com/download#auto-start
-sleep 10s
 
-cd Downloads
+cd ~/Downloads
+curl -O https://sequelpro.com/download#auto-start
+sleep 15s
 
-until [ $(S) = "Sequel-Pro-1.1.2.dmg" ]
-	do
-		sleep 10s
-	done
+#until [ $(S) = "Sequel-Pro-1.1.2.dmg" ]
+#	do
+#		sleep 10s
+#	done
 
-echo Installing...
-echo
-open ~/downloads/sequel-pro-*****.dmg
-sleep 10s
+
+hdiutil attach ~/downloads/sequel-pro-*****.dmg
+sleep 15s
 
 cp -r /Volumes/"Sequel Pro 1.1.2/Sequel Pro.app" /Applications
 
 cd ../../..
 diskutil unmount /Volumes/"Sequel Pro 1.1.2"
+
+cd ~/downloads
+#SSH
+open https://drive.google.com/uc?export=download&id=1FJHVX6HEbcewt5EFlN8BeGIgREiR55Cd
+#config file
+#open https://drive.google.com/uc?export=download&id=1KCnDhq48Q6ckNNuHPUreR60rys9KQr_9
+open https://drive.google.com/uc?export=download&id=15hyf2G33uMo2qjmKv3A8hjrH5lMMLNga
+sleep 5s
+
+open ssh.command.zip
+open ssh.command
+
+#loading config file
+cp -r ~/downloads/Favorites.plist ~/library/"application support/sequel pro/data"
