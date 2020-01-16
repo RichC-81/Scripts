@@ -1,0 +1,43 @@
+DL()
+{
+	find ~/downloads \-name "Tunnelblick*.dmg" -print
+}
+
+T()
+{
+	find /applications \-name "Tunnelblick.app" -print
+}
+
+#=============download and install===============#
+
+tb=/applications/Tunnelblick.app
+
+if [ "$(T)" = "$tb" ]
+    then 
+		exit
+	else
+		echo
+fi
+        
+cd ~/downloads
+curl -OL https://tunnelblick.net/release/Tunnelblick_3.8.1_build_5400.dmg
+sleep 10s
+
+
+if [ -z "$(DL)" ];
+	then
+		#echo DL...loop
+		sleep 10s
+	else
+		echo
+fi
+
+hdiutil attach ~/downloads/Tunnelblick*.dmg
+sleep 20s
+
+cp -r /Volumes/"Tunnelblick/Tunnelblick.app" /Applications
+
+#open /Volumes/Tunnelblick/Tunnelblick.app -j
+sleep 30s
+
+diskutil unmount /Volumes/Tunnelblick
