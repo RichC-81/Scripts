@@ -1,25 +1,36 @@
-
-
-S()
+DL()
 {
-	find googlechrome.dmg
+	find ~/downloads \-name "googlechrome.dmg" -print
 }
 
-#download and install
+G()
+{
+	find /applications \-name "Google Chrome.app" -print
+}
+#=========download and install============#
 
-open "https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg"
+GC=/applications/"Google Chrome.app"
+
+if [ "$(G)" = "$GC" ]
+    then 
+		exit
+	else
+		echo
+fi
+
+cd ~/downloads
+curl -O "https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg"
 sleep 20s
 
-cd downloads
 
-#echo S
-
-until [ $(S) = "googlechrome.dmg" ]
-	do
+if [ -z "$(DL)" ];
+	then
 		sleep 10s
-	done
+	else
+		echo found
+fi
 
-open googlechrome.dmg
+hdiutil attach ~/downloads/googlechrome.dmg
 
 sleep 20s
 
