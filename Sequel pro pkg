@@ -1,0 +1,24 @@
+#===== Sequel pro istaller =======#
+sudo installer -verbose -pkg ~/"downloads/SequelPro/Sequel Pro.pkg" -target /
+sleep 10s
+open /"Applications/Sequel Pro.app"
+sleep 5s
+osascript -e 'quit app "sequel pro.app"'
+open /"Applications/Sequel Pro.app/Favorites.plist.zip"
+sleep 5s
+# moves config file
+cp -fR ~/"Downloads/Favorites.plist" ~/"library/Application Support/Sequel Pro/data/Favorites.plist"
+
+clear
+
+#=========== SSH Keygen ========#
+
+echo generating SSH key...
+echo
+ssh-keygen -t rsa -f ~/.ssh/id_rsa
+echo
+echo -e "\033[1;101m " $(cat ~/.ssh/id_rsa.pub) " \033[0m \n"
+echo "COPY the above part of ssh-rsa AAA.... and send it to support"
+echo Press Enter button to continue
+read -r
+echo -e "\033[1;31m You can now close this window \033[0m \n"
